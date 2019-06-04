@@ -59,7 +59,6 @@ custom:
 functions:  
   getCustomer:
     handler: src/customer.get
-    name: ${self:provider.stage}-getCustomer
     description: Get Customer
     environment:
       TABLE_CUSTOMER: ${self:custom.customerTable}
@@ -75,7 +74,6 @@ functions:
                 customerId: true 
   createCustomer:
     handler: src/customer.create
-    name: ${self:provider.stage}-createCustomer
     description: Create Customer
     environment:
       TABLE_CUSTOMER: ${self:custom.customerTable}
