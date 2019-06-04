@@ -4,7 +4,6 @@
   "description": "",
   "main": "handler.js",
   "dependencies": {
-    "@puresec/function-shield": "^1.2.7",
     "aws-xray-sdk": "^2.3.3",
     "uuid": "^3.3.2"
   },

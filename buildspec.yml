@@ -10,11 +10,10 @@ phases:
       - npm install
   build:
     commands:
-      - npm test
-    finally:
-      - npm run pack
+      - npm test      
   post_build:
     commands:    
+      - npm run pack
       - echo Build completed on `date`      
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
