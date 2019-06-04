@@ -23,8 +23,6 @@ provider:
     apiGateway: true
   logs:
     restApi: true
-  environment:
-    FUNCTION_SHIELD_TOKEN: ${ssm:functionShieldToken}
   iamRoleStatements:    
     - Effect: "Allow"
       Action:
