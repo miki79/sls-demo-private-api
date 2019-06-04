@@ -1,10 +1,11 @@
 const AWSXRay = require('aws-xray-sdk');
 const AWS = AWSXRay.captureAWS(require('aws-sdk'));
 const uuidv4 = require('uuid/v4');
-const docClient = new AWS.DynamoDB.DocumentClient();
+
 const { TABLE_CUSTOMER } = process.env;
 
 const getCustomer = customerId => {
+  const docClient = new AWS.DynamoDB.DocumentClient();
   return docClient
     .get({
       TableName: TABLE_CUSTOMER,
@@ -17,13 +18,13 @@ const getCustomer = customerId => {
 };
 
 const setCustomer = async customerObj => {
+  const docClient = new AWS.DynamoDB.DocumentClient();
   return docClient
     .put({
       TableName: TABLE_CUSTOMER,
       Item: customerObj,
     })
-    .promise()
-    .then();
+    .promise();
 };
 
 module.exports.get = async event => {
@@ -52,7 +53,7 @@ module.exports.create = async event => {
   };
   await setCustomer(customer);
   return {
-    statusCode: 200,
+    statusCode: 201,
     body: JSON.stringify({ customerId: id }),
   };
 };
