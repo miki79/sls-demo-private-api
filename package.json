@@ -24,7 +24,7 @@
     "serverless-plugin-optimize": "^4.1.0-rc.1"
   },
   "scripts": {
-    "deploy": "sls deploy -v --package .serverless",
+    "deploy": "sls deploy -v",
     "pack": "sls package",
     "test": "node_modules/eslint/bin/eslint.js ./ && jest --coverage"
   },
