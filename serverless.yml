@@ -51,7 +51,7 @@ custom:
     endpointType: regional
     createRoute53Record: false  
   serverless-offline:
-    apiKey: ${env:LOCAL_API_KEY}
+    apiKey: ${env:LOCAL_API_KEY,"12345678"}
   dotenv:    
     include:
       - AWS_XRAY_CONTEXT_MISSING
