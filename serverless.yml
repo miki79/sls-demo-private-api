@@ -1,0 +1,107 @@
+service: crm-poc
+
+provider:
+  name: aws
+  runtime: nodejs10.x  
+  region: ${env:AWS_REGION}  
+  profile: ${env:AWS_PROFILE}
+  endpointType: REGIONAL
+  memorySize: 512
+  reserveConcurrency: 10
+  timeout: 10
+  logRetentionInDays: 14
+  deploymentBucket:
+    name: ${ssm:/${self:provider.stage}/deploymentBucket,${env:DEPLOYMENT_BUCKET}}
+    serverSideEncryption: AES256    
+  versionFunctions: false  
+  apiKeys:
+    - ${ssm:apiKeyPrivate}
+  apiGateway:
+    minimumCompressionSize: 1024
+    description: API CRM
+  tracing:
+    lambda: true
+    apiGateway: true
+  logs:
+    restApi: true
+  iamRoleStatements:    
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:GetItem"
+        - "dynamodb:PutItem"        
+      Resource: 
+        - Fn::GetAtt:
+          - "CustomerTable"
+          - Arn
+          
+package:
+  individually: true
+
+plugins:
+  - serverless-domain-manager
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-plugin-optimize
+
+custom:   
+  customerTable: customers
+  tableThroughput: 1
+  customDomain:
+    domainName: ${ssm:/${self:provider.stage}/domain,${env:DOMAIN_API}}
+    basePath: crm
+    endpointType: regional
+    createRoute53Record: false  
+  serverless-offline:
+    apiKey: ${env:LOCAL_API_KEY}
+  dotenv:    
+    include:
+      - AWS_XRAY_CONTEXT_MISSING
+
+functions:  
+  getCustomer:
+    handler: src/customer.get
+    name: ${self:provider.stage}-getCustomer
+    description: Get Customer
+    environment:
+      TABLE_CUSTOMER: ${self:custom.customerTable}
+    events:
+      - http:
+          path: /customer/{customerId}
+          method: get
+          cors: true
+          private: false
+          request:
+            parameters:
+              paths:
+                customerId: true 
+  createCustomer:
+    handler: src/customer.create
+    name: ${self:provider.stage}-createCustomer
+    description: Create Customer
+    environment:
+      TABLE_CUSTOMER: ${self:custom.customerTable}
+    events:
+      - http:
+          path: /customer
+          method: post
+          cors: true
+          private: true
+          request:
+           schema:
+              application/json: ${file(module/createCustomer.json)}    
+
+resources:
+  Resources:   
+    CustomerTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.customerTable}
+        AttributeDefinitions:
+          - AttributeName: customerId
+            AttributeType: S          
+        KeySchema:
+          - AttributeName: customerId
+            KeyType: HASH                  
+        ProvisionedThroughput:
+          ReadCapacityUnits: ${self:custom.tableThroughput}
+          WriteCapacityUnits: ${self:custom.tableThroughput}   
