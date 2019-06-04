@@ -11,7 +11,7 @@ provider:
   timeout: 10
   logRetentionInDays: 14
   deploymentBucket:
-    name: ${ssm:/${self:provider.stage}/deploymentBucket,${env:DEPLOYMENT_BUCKET}}
+    name: ${ssm:/${self:provider.stage}/deploymentBucket}
     serverSideEncryption: AES256    
   versionFunctions: false  
   apiKeys:
@@ -24,6 +24,8 @@ provider:
     apiGateway: true
   logs:
     restApi: true
+  environment:
+    FUNCTION_SHIELD_TOKEN: ${ssm:functionShieldToken}
   iamRoleStatements:    
     - Effect: "Allow"
       Action:
@@ -47,7 +49,7 @@ custom:
   customerTable: customers
   tableThroughput: 1
   customDomain:
-    domainName: ${ssm:/${self:provider.stage}/domain,${env:DOMAIN_API}}
+    domainName: ${ssm:/${self:provider.stage}/domain}
     basePath: crm
     endpointType: regional
     createRoute53Record: false  
