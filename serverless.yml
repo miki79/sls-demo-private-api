@@ -14,7 +14,7 @@ provider:
     serverSideEncryption: AES256    
   versionFunctions: false  
   apiKeys:
-    - ${ssm:apiKeyPrivate}
+    - ${ssm:/${self:provider.stage}/apiKeyPrivate}
   apiGateway:
     minimumCompressionSize: 1024
     description: API CRM
@@ -43,7 +43,7 @@ plugins:
   - serverless-plugin-optimize
 
 custom:   
-  customerTable: customers
+  customerTable: ${self:service.name}-${self:provider.stage}-customers
   tableThroughput: 1
   customDomain:
     domainName: ${ssm:/${self:provider.stage}/domain}
