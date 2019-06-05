@@ -13,8 +13,6 @@ provider:
     name: ${ssm:/${self:provider.stage}/deploymentBucket}
     serverSideEncryption: AES256    
   versionFunctions: false  
-  apiKeys:
-    - ${ssm:/${self:provider.stage}/apiKeyPrivate}
   apiGateway:
     minimumCompressionSize: 1024
     description: API CRM
@@ -37,6 +35,7 @@ package:
   individually: true
 
 plugins:
+  - serverless-add-api-key
   - serverless-domain-manager
   - serverless-dotenv-plugin
   - serverless-offline
@@ -54,7 +53,11 @@ custom:
     apiKey: ${env:LOCAL_API_KEY,"12345678"}
   dotenv:    
     include:
-      - AWS_XRAY_CONTEXT_MISSING
+      - AWS_XRAY_CONTEXT_MISSING  
+  apiKeys:
+    - name: privateKey
+      value: ${ssm:/${self:provider.stage}/apiKeyPrivate~true}
+      
 
 functions:  
   getCustomer:
@@ -67,7 +70,7 @@ functions:
           path: /customer/{customerId}
           method: get
           cors: true
-          private: false
+          private: true
           request:
             parameters:
               paths:
