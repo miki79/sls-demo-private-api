@@ -56,7 +56,7 @@ custom:
       - AWS_XRAY_CONTEXT_MISSING  
   apiKeys:
     - name: privateKey
-      value: ${ssm:/${self:provider.stage}/apiKeyPrivate~true}
+      value: ${ssm:/${self:provider.stage}/apiPrivateKey~true}
       
 
 functions:  

@@ -36,7 +36,7 @@ module.exports.get = async (event) => {
   }
   return {
     statusCode: 404,
-    body: JSON.stringify({ error: 'Customer not found' }),
+    body: JSON.stringify({ error: 'Customer not found!' }),
   };
 };
 
