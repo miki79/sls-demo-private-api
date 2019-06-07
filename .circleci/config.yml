@@ -42,7 +42,7 @@ jobs:
       - attach_workspace:
           at: /home/circleci/project
       - run:
-          name:  Download cc-test-reporter
+          name:  Upload coverage
           command: |
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
