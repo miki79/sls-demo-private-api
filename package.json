@@ -25,7 +25,6 @@
   },
   "scripts": {
     "deploy": "sls deploy -v",
-    "pack": "sls package",
     "test": "node_modules/eslint/bin/eslint.js ./ && jest --coverage"
   },
   "author": "Michele Giardi",
