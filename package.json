@@ -1,7 +1,6 @@
 {
-  "name": "crm-poc",
+  "name": "sls-demo-crm",
   "version": "1.0.0",
-  "description": "",
   "main": "handler.js",
   "dependencies": {
     "aws-xray-sdk": "^2.3.3",
@@ -29,8 +28,7 @@
     "pack": "sls package",
     "test": "node_modules/eslint/bin/eslint.js ./ && jest --coverage"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Michele Giardi",
   "license": "ISC",
   "jest": {
     "coverageDirectory": "./coverage/",

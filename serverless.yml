@@ -1,4 +1,4 @@
-service: crm-poc
+service: sls-demo-crm
 
 provider:
   name: aws
