@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults  
   docker:
-    - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+    - image: circleci/node:lts 
 
 jobs:
   build:
