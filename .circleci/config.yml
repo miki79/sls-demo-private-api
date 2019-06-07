@@ -20,6 +20,9 @@ jobs:
       - run:
           name: Test
           command: npm test
+      - run:
+          name: List dir
+          command: pwd && ls -lh
       - store_artifacts:
           path: coverage
           prefix: coverage
