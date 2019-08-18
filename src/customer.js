@@ -12,7 +12,7 @@ const getCustomer = (customerId) => {
       Key: { customerId },
     })
     .promise()
-    .then(data => (data.Item ? data.Item : null));
+    .then((data) => (data.Item ? data.Item : null));
 };
 
 const setCustomer = async (customerObj) => {
