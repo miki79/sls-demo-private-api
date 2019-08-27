@@ -24,7 +24,9 @@ jobs:
       env:
         CI: true
     - name: Upload coverage
-      if: matrix.node-version == '10.x'
+      if: matrix.node-version == '10.x' && github.ref == 'master'
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       run: |
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
