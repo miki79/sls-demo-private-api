@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "handler.js",
   "dependencies": {
-    "aws-xray-sdk": "^2.3.6",
+    "aws-xray-sdk": "^2.4.0",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
