@@ -4,7 +4,7 @@
   "main": "handler.js",
   "dependencies": {
     "aws-xray-sdk": "^2.5.0",
-    "uuid": "^3.3.3"
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "@types/jest": "^24.9.0",
