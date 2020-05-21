@@ -20,7 +20,7 @@
     "serverless-add-api-key": "^4.1.0",
     "serverless-domain-manager": "^4.1.0",
     "serverless-dotenv-plugin": "^2.4.2",
-    "serverless-offline": "^6.1.5",
+    "serverless-offline": "^6.1.7",
     "serverless-plugin-optimize": "^4.1.0-rc.1"
   },
   "scripts": {
