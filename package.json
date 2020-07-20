@@ -11,7 +11,7 @@
     "aws-sdk": "^2.715.0",
     "aws-sdk-mock": "^5.1.0",
     "browserify": "^16.5.1",
-    "eslint": "^7.4.0",
+    "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.18.0",
