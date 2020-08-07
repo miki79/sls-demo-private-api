@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",
-    "aws-sdk": "^2.727.1",
+    "aws-sdk": "^2.728.0",
     "aws-sdk-mock": "^5.1.0",
     "browserify": "^16.5.2",
     "eslint": "^7.6.0",
