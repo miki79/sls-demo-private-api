@@ -15,7 +15,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.0",
-    "jest": "^26.4.2",
+    "jest": "^26.5.2",
     "serverless": "^2.4.0",
     "serverless-add-api-key": "^4.1.1",
     "serverless-domain-manager": "^5.0.0",
