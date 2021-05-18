@@ -3,7 +3,7 @@ const fs = require('fs');
 const awsMock = require('aws-sdk-mock');
 
 awsMock.setSDK(path.resolve(`${__dirname}/../node_modules/aws-sdk`));
-const { get, create } = require('../src/customer.js');
+const { get, create } = require('../src/customer');
 
 console.info = jest.fn();
 console.error = jest.fn();
@@ -21,17 +21,11 @@ describe('Get Customer', () => {
 
   test('Get valid customer', () => {
     awsMock.mock('DynamoDB.DocumentClient', 'get', (params, callback) => {
-      callback(
-        null,
-        JSON.parse(fs.readFileSync(`${__dirname}/mock/customerGetValid.json`).toString()),
-      );
+      callback(null, JSON.parse(fs.readFileSync(`${__dirname}/mock/customerGetValid.json`).toString()));
     });
 
     return get(event).then((data) => {
-      expect(data).toHaveProperty(
-        'body',
-        '{"firstName":"first","lastName":"last","customerId":"f6b794e0-cc22-4d29-adae-68f74a4e7526"}',
-      );
+      expect(data).toHaveProperty('body', '{"firstName":"first","lastName":"last","customerId":"f6b794e0-cc22-4d29-adae-68f74a4e7526"}');
       expect(data).toHaveProperty('statusCode', 200);
     });
   });
