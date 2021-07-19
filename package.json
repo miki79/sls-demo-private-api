@@ -19,7 +19,7 @@
     "pkginfo": "^0.4.1",
     "serverless": "^2.50.0",
     "serverless-add-api-key": "^4.2.0",
-    "serverless-domain-manager": "^5.1.0",
+    "serverless-domain-manager": "^5.1.2",
     "serverless-dotenv-plugin": "^3.9.0",
     "serverless-offline": "^7.0.0",
     "serverless-plugin-optimize": "^4.1.0-rc.1"
