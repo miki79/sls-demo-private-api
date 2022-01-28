@@ -17,7 +17,7 @@
     "eslint-plugin-jest": "^26.0.0",
     "jest": "^27.4.7",
     "pkginfo": "^0.4.1",
-    "serverless": "^2.71.0",
+    "serverless": "^3.0.0",
     "serverless-add-api-key": "^4.2.1",
     "serverless-domain-manager": "^5.8.0",
     "serverless-dotenv-plugin": "^3.12.2",
