@@ -7,7 +7,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
+    "@types/jest": "^27.4.1",
     "aws-sdk": "^2.1083.0",
     "aws-sdk-mock": "^5.6.2",
     "browserify": "^17.0.0",
