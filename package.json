@@ -7,7 +7,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.0",
+    "@types/jest": "^28.1.1",
     "aws-sdk": "^2.1128.0",
     "aws-sdk-mock": "^5.7.0",
     "browserify": "^17.0.0",
@@ -15,7 +15,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.1.5",
-    "jest": "^28.0.3",
+    "jest": "^28.1.1",
     "pkginfo": "^0.4.1",
     "serverless": "^3.16.0",
     "serverless-add-api-key": "^4.2.1",
